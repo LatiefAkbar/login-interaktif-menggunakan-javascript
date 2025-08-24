@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Login Animatif</title>
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* background utama */
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* GIF pemanis */
+  .decor-gif {
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    width: 200px; /* ukuran GIF */
+    pointer-events: none; /* supaya tidak mengganggu klik */
+    z-index: 0;
+  }
+
+  .login-container {
+    position: relative;
+    z-index: 1; /* form di atas GIF */
+    background: transparent;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    width: 320px;
+    text-align: center;
+
+  }
+
+  .login-container h2 {
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 24px;
+  }
+
+  .login-container input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 12px 0;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    transition: 0.3s;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+
+  .login-container input:focus {
+    border-color: #f39c12; 
+    box-shadow: 0 0 8px rgba(243,156,18,0.5);
+    outline: none;
+  }
+
+  .login-container button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #f39c12;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .login-container button:hover {
+    background: #e67e22;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  .message {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+  }
+
+  .message.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .message.success { color: green; }
+  .message.error { color: red; }
+</style>
+</head>
+<body>
+
+<!-- GIF pemanis -->
+<img src="naruto-sasuke.gif" alt="Naruto Sasuke" class="decor-gif">
+
+<div class="login-container">
+  <h2>Login Demo</h2>
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <div class="message" id="message"></div>
+</div>
+
+<script>
+function login() {
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  const message = document.getElementById('message');
+
+  // Dummy credentials
+  if(username === "latief" && password === "12345") {
+    message.className = "message success show";
+    message.textContent = "Login berhasil! 🎉";
+  } else {
+    message.className = "message error show";
+    message.textContent = "Username atau password salah!";
+  }
+
+  setTimeout(() => {
+    message.className = "message";
+  }, 2000);
+}
+</script>
+
+</body>
+</html>
